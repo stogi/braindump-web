@@ -19,40 +19,6 @@ require.config({
 	}
 });
 
-require([
-	'wire',
-	'contexts/main',
-	'jquery',
-	'bootstrap'
-], function(
-	wire,
-	context,
-	$
-) {
-	wire(context).then(
-		function(wiredContext) {
-			console.log(wiredContext.message);
-			console.log('Running jQuery %s', $().jquery);
-
-			$('.hero-unit').append(wiredContext.navigationView.getElement());
-		},
-		function(error) {
-			console.log(error);
-			throw error;
-		}
-	);
-}, function(e) { throw e; });
-
-//require([
-//	'wire!contexts/main',
-//	'jquery',
-//	'bootstrap'
-//], function(
-//	context,
-//	$
-//) {
-//	console.log(context.message);
-//	console.log('Running jQuery %s', $().jquery);
-//
-//	$('.hero-unit').append(context.navigationView.getElement());
-//});
+require(['app'], function(app) {
+	console.log(app);
+});
