@@ -1,7 +1,8 @@
 define
-	message: 'Hello World! Again!'
+
+	applicationName: 'Braindump'
 
 	navigationView:
 		create: 'views/NavigationView'
 		properties:
-			name: $ref: 'message'
+			applicationName: $ref: 'applicationName'

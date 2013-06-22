@@ -21,6 +21,7 @@ module.exports = function (grunt) {
 	var yeomanConfig = {
 		app: 'app',
 		dist: 'dist',
+		test: 'test',
 		tmp: '.tmp'
 	};
 
@@ -42,6 +43,10 @@ module.exports = function (grunt) {
 				files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
 				tasks: ['compass:server']
 			},
+			handlebars: {
+				files: ['<%= yeoman.app %>/templates/{,*/}*.hbs'],
+				tasks: ['handlebars']
+			},
 			livereload: {
 				options: {
 					livereload: LIVERELOAD_PORT
@@ -50,6 +55,7 @@ module.exports = function (grunt) {
 					'<%= yeoman.app %>/*.html',
 					'{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
 					'{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+					'{.tmp,<%= yeoman.app %>}/templates/{,*/}*.hbs',
 					'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
 				]
 			}
@@ -311,7 +317,8 @@ module.exports = function (grunt) {
 		concurrent: {
 			server: [
 				'coffee:dist',
-				'compass:server'
+				'compass:server',
+			  'handlebars'
 			],
 			test: [
 				'coffee',
@@ -320,6 +327,7 @@ module.exports = function (grunt) {
 			dist: [
 				'coffee',
 				'compass:dist',
+				'handlebars',
 				'imagemin',
 				'svgmin',
 				'htmlmin'
@@ -338,6 +346,21 @@ module.exports = function (grunt) {
 				dest: '.tmp/bower_components',
 				relativeSrc: '../app/bower_components',
 				options: { type: 'dir' }
+			}
+		},
+		handlebars: {
+			compile: {
+				options: {
+					amd: true,
+					processName: function(fullPath) {
+						return fullPath
+							.replace(/^.*[\\\/]/, '') // Remove path.
+							.replace(/\..*/, '');     // Remove extension.
+					}
+				},
+				files: {
+					'<%= yeoman.tmp %>/scripts/templates.js': '<%= yeoman.app %>/templates/**/*.hbs'
+				}
 			}
 		}
 	});

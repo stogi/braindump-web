@@ -1,6 +1,7 @@
 require.config
 	paths:
 		jquery: '../bower_components/jquery/jquery'
+		handlebars: '../bower_components/handlebars/handlebars.runtime'
 		bootstrap: 'vendor/bootstrap'
 
 	packages: [
@@ -14,6 +15,9 @@ require.config
 		bootstrap:
 			deps: ['jquery']
 			exports: 'jquery'
+
+		handlebars:
+			exports: 'Handlebars'
 
 require ['app'], (app) ->
 	console.log app
