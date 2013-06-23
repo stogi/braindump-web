@@ -1,8 +1,17 @@
 define
-
 	applicationName: 'Braindump'
 
 	navigationView:
-		create: 'views/NavigationView'
+		create:
+			module: 'views/NavigationView'
+
+			args: [
+				{ el: '.navigation' }
+			]
+
 		properties:
-			applicationName: $ref: 'applicationName'
+			applicationName: { $ref: 'applicationName' }
+
+	plugins: [
+		{ module: 'wire/debug' }
+	]

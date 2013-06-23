@@ -1,8 +1,10 @@
 require.config
 	paths:
-		jquery: '../bower_components/jquery/jquery'
-		handlebars: '../bower_components/handlebars/handlebars.runtime'
+		backbone: '../bower_components/backbone/backbone'
 		bootstrap: 'vendor/bootstrap'
+		handlebars: '../bower_components/handlebars/handlebars.runtime'
+		jquery: '../bower_components/jquery/jquery'
+		underscore: '../bower_components/underscore/underscore'
 
 	packages: [
 		{ name: 'meld', location: '../bower_components/meld', main: 'meld' }
@@ -12,12 +14,24 @@ require.config
 	]
 
 	shim:
+		backbone:
+			deps: [
+				'jquery'
+				'underscore'
+			]
+			exports: 'Backbone'
+
 		bootstrap:
-			deps: ['jquery']
+			deps: [
+				'jquery'
+			]
 			exports: 'jquery'
 
 		handlebars:
 			exports: 'Handlebars'
 
+		underscore:
+			exports: '_'
+
 require ['app'], (app) ->
-	console.log app
+	console.log app, 'has started!'

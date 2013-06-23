@@ -1,11 +1,17 @@
 define (require) ->
 
-	$ = require 'jquery'
+	Backbone = require 'backbone'
 
-	class NavigationView
+	templates = require 'templates'
 
-		constructor: ->
-			@name
+	class NavigationView extends Backbone.View
 
-		getElement: ->
-			$ "<div>#{@name}</div>"
+		template: templates.NavigationView
+
+    render: ->
+	    data =
+	      applicationName: @applicationName
+
+	    @$el.html @template data
+
+	    @
