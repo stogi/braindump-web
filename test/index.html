@@ -4,6 +4,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Test'em Spec Runner</title>
 	<link rel="stylesheet" href="../app/bower_components/mocha/mocha.css">
+
 	<script src="../app/bower_components/mocha/mocha.js"></script>
 	<script src="/testem.js"></script>
 	<script src="../app/bower_components/chai/chai.js"></script>
@@ -12,64 +13,49 @@
 		mocha.setup('bdd');
 		expect = chai.expect;
 		chai.should();
-
-		(function() {
-			require.config({
-				paths: {
-					backbone: '../bower_components/backbone/backbone',
-					handlebars: '../bower_components/handlebars/handlebars.runtime',
-					jquery: '../bower_components/jquery/jquery',
-					underscore: '../bower_components/underscore/underscore'
-				},
-				packages: [
-					{
-						name: 'meld',
-						location: '../bower_components/meld',
-						main: 'meld'
-					}, {
-						name: 'poly',
-						location: '../bower_components/poly',
-						main: 'poly'
-					}, {
-						name: 'wire',
-						location: '../bower_components/wire',
-						main: 'wire'
-					}, {
-						name: 'when',
-						location: '../bower_components/when',
-						main: 'when'
-					}
-				],
-				shim: {
-					backbone: {
-						deps: ['jquery', 'underscore'],
-						exports: 'Backbone'
-					},
-					bootstrap: {
-						deps: ['jquery'],
-						exports: 'jquery'
-					},
-					handlebars: {
-						exports: 'Handlebars'
-					},
-					underscore: {
-						exports: '_'
-					}
-				},
-				baseUrl: '../.tmp/scripts'
-			});
-
-			var specs = [];
-			{{#serve_files}}
-			specs.push('../{{src}}');
-			{{/serve_files}}
-
-				require(specs, function() {
-					mocha.run();
-				});
-			}).call(this);
 	</script>
+	<script>
+		require.config({
+			paths: {
+				backbone: '../bower_components/backbone/backbone',
+				handlebars: '../bower_components/handlebars/handlebars.runtime',
+				jquery: '../bower_components/jquery/jquery',
+				underscore: '../bower_components/underscore/underscore'
+			},
+			packages: [
+				{ name: 'meld', location: '../bower_components/meld', main: 'meld' },
+				{ name: 'poly', location: '../bower_components/poly', main: 'poly' },
+				{ name: 'wire', location: '../bower_components/wire', main: 'wire' },
+				{ name: 'when', location: '../bower_components/when', main: 'when' }
+			],
+			shim: {
+				backbone: {
+					deps: ['jquery', 'underscore'],
+					exports: 'Backbone'
+				},
+				bootstrap: {
+					deps: ['jquery'],
+					exports: 'jquery'
+				},
+				handlebars: {
+					exports: 'Handlebars'
+				},
+				underscore: {
+					exports: '_'
+				}
+			},
+			baseUrl: '../.tmp/scripts'
+		});
 
+		var specs = [];
+		{{#serve_files}}
+			specs.push('../{{src}}');
+		{{/serve_files}}
+
+		require(specs, function() {
+			mocha.run();
+		});
+	</script>
 </head>
 <body>
 <div id="mocha"></div>
