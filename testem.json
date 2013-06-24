@@ -1,6 +1,12 @@
 {
+	"before_tests": "grunt test",
 	"framework": "mocha+chai",
 	"src_files": [
-		"test/spec/**/*.js"
-	]
+		"app/scripts/**/*.coffee",
+		"test/spec/**/*.coffee"
+	],
+	"serve_files": [
+		".tmp/spec/**/*.js"
+	],
+	"test_page": "test/index.html"
 }
