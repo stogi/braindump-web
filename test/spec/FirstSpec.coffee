@@ -3,10 +3,10 @@ define ->
 		describe 'maybe a bit more context here', ->
 
 			it 'should run here few assertions', ->
-	      expect(false).to.be.false
+	      false.should.be.false
 
 			it 'should run here few more assertions', ->
-				expect(true).to.be.true
+				true.should.be.true
 
-			it 'addition', ->
-				expect(1 + 2).to.be.equal 3
+			it 'adds 2 numbers', ->
+				(2 + 2).should.be.equal 4

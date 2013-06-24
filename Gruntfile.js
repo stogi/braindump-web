@@ -304,7 +304,6 @@ module.exports = function (grunt) {
 			],
 			test: [
 				'coffee',
-				'compass',
 			  'handlebars'
 			],
 			dist: [
