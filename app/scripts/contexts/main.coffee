@@ -12,6 +12,8 @@ define
 		properties:
 			applicationName: { $ref: 'applicationName' }
 
+		ready: 'render'
+
 	plugins: [
 		{ module: 'wire/debug' }
 	]

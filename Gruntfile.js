@@ -77,16 +77,6 @@ module.exports = function (grunt) {
 					}
 				}
 			},
-			test: {
-				options: {
-					middleware: function (connect) {
-						return [
-							mountFolder(connect, '.tmp'),
-							mountFolder(connect, 'test')
-						];
-					}
-				}
-			},
 			dist: {
 				options: {
 					middleware: function (connect) {
@@ -127,14 +117,6 @@ module.exports = function (grunt) {
 				'!<%= yeoman.app %>/scripts/vendor/*',
 				'test/spec/{,*/}*.js'
 			]
-		},
-		mocha: {
-			all: {
-				options: {
-					run: true,
-					urls: ['http://localhost:<%= connect.options.port %>/index.html']
-				}
-			}
 		},
 		coffee: {
 			dist: {
@@ -322,7 +304,7 @@ module.exports = function (grunt) {
 			],
 			test: [
 				'coffee',
-				'compass'
+			  'handlebars'
 			],
 			dist: [
 				'coffee',
@@ -382,8 +364,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('test', [
 		'clean:server',
 		'concurrent:test',
-		'connect:test',
-		'mocha'
+	  'symlink'
 	]);
 
 	grunt.registerTask('build', [

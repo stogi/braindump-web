@@ -34,4 +34,4 @@ require.config
 			exports: '_'
 
 require ['app'], (app) ->
-	console.log app, 'has started!'
+	console.log 'App has started!'
