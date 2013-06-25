@@ -3,6 +3,7 @@
 	"framework": "mocha+chai",
 	"src_files": [
 		"app/scripts/**/*.coffee",
+		"app/templates/**/*.hbs",
 		"test/spec/**/*.coffee"
 	],
 	"serve_files": [

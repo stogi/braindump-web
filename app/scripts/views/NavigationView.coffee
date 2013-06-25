@@ -12,6 +12,6 @@ define (require) ->
 	    data =
 	      applicationName: @applicationName
 
-	    @$el.html @template data
+	    @$el.append @template data
 
 	    @
