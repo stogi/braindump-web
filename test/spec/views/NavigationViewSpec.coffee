@@ -1,20 +1,28 @@
 define (require) ->
 	NavigationView = require 'views/NavigationView'
-	templates = require 'templates'
 
 	describe 'NavigationView', ->
 
+		applicationName = null
 		view = null
 
 		beforeEach ->
+			applicationName = 'ApplicationName'
+
 			view = new NavigationView
-			view.template = templates.NavigationView
+			view.applicationName = applicationName
 
 		describe 'render()', ->
 
-			it 'returns reference to view', ->
-				view.render().should.be.equal view
+			result = null
 
-			it 'appends template', ->
-				console.log view.render().el
-				view.render().$('.navbar').should.have.length 1
+			beforeEach ->
+				result = view.render()
+
+			it 'returns reference to view', ->
+				result.should.be.equal view
+
+			it 'shows application name', ->
+				$applicationName = view.$('.application-name')
+				$applicationName.should.have.length 1
+				$applicationName.text().should.equal applicationName

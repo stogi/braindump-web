@@ -1,5 +1,4 @@
 define (require) ->
-
 	Backbone = require 'backbone'
 
 	templates = require 'templates'
@@ -8,10 +7,10 @@ define (require) ->
 
 		template: templates.NavigationView
 
-    render: ->
-	    data =
-	      applicationName: @applicationName
+		render: ->
+			data =
+				applicationName: @applicationName
 
-	    @$el.append @template data
+			@$el.html @template data
 
-	    @
+			@
