@@ -6,7 +6,7 @@ define
 			module: 'views/NavigationView'
 
 			args: [
-				{ el: '.navigation' }
+				{ el: 'header' }
 			]
 
 		properties:

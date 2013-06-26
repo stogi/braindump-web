@@ -1,4 +1,5 @@
 define (require) ->
+
 	NavigationView = require 'views/NavigationView'
 
 	describe 'NavigationView', ->
@@ -20,7 +21,7 @@ define (require) ->
 				result = view.render()
 
 			it 'returns reference to view', ->
-				result.should.be.equal view
+				result.should.equal view
 
 			it 'shows application name', ->
 				$applicationName = view.$('.application-name')
