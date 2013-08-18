@@ -7,7 +7,7 @@ module.exports = function(config) {
     basePath: '',
 
     // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['mocha', 'requirejs'],
+    frameworks: ['requirejs', 'mocha', 'chai'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -18,7 +18,7 @@ module.exports = function(config) {
 
     // list of files / patterns to exclude
     exclude: [
-      'app/scripts/contexts/main.coffee',
+      'app/scripts/contexts/**/*.coffee',
       'app/scripts/app.coffee',
       'app/scripts/main.coffee',
       'app/scripts/modules.coffee'

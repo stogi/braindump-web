@@ -4,15 +4,12 @@ for file of window.__karma__.files
     if /Spec\.js$/.test(file)
       tests.push(file)
 
-console.debug 'after loop', tests
-
 require.config
   baseUrl: '/base/app/scripts'
 
   paths:
     backbone: '../bower_components/backbone/backbone'
     bootstrap: 'vendor/bootstrap'
-    chai: '../bower_components/chai/chai'
     handlebars: '../bower_components/handlebars/handlebars.runtime'
     jquery: '../bower_components/jquery/jquery'
     underscore: '../bower_components/underscore/underscore'
@@ -37,9 +34,6 @@ require.config
         'jquery'
       ]
       exports: 'jquery'
-
-    chai:
-      exports: 'chai'
 
     handlebars:
       exports: 'Handlebars'
