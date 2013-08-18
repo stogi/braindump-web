@@ -130,17 +130,6 @@ module.exports = function (grunt) {
 						ext: '.js'
 					}
 				]
-			},
-			test: {
-				files: [
-					{
-						expand: true,
-						cwd: 'test/spec',
-						src: '{,*/}*.coffee',
-						dest: '.tmp/spec',
-						ext: '.js'
-					}
-				]
 			}
 		},
 		compass: {
@@ -304,8 +293,8 @@ module.exports = function (grunt) {
 				'handlebars'
 			],
 			test: [
-				'coffee',
-				'handlebars'
+				'handlebars',
+				'karma:ci'
 			],
 			dist: [
 				'coffee',
@@ -381,7 +370,6 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('build', [
 		'clean:dist',
-		'karma:ci',
 		'useminPrepare',
 		'concurrent:dist',
 		'symlink',
