@@ -8,6 +8,7 @@ module.exports = (config) ->
 
 		# testing framework to use (jasmine/mocha/qunit/...)
 		frameworks: [
+			# This order is important. Chai doesn't work if loaded before RequireJS.
 			'requirejs'
 			'mocha'
 			'chai'
