@@ -15,6 +15,7 @@ var mountFolder = function (connect, dir) {
 module.exports = function (grunt) {
 	// load all grunt tasks
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-symlink');
 
 	// configurable paths
@@ -300,11 +301,11 @@ module.exports = function (grunt) {
 			server: [
 				'coffee:dist',
 				'compass:server',
-			  'handlebars'
+				'handlebars'
 			],
 			test: [
 				'coffee',
-			  'handlebars'
+				'handlebars'
 			],
 			dist: [
 				'coffee',
@@ -334,7 +335,7 @@ module.exports = function (grunt) {
 			compile: {
 				options: {
 					amd: true,
-					processName: function(fullPath) {
+					processName: function (fullPath) {
 						return fullPath
 							.replace(/^.*[\\\/]/, '') // Remove path.
 							.replace(/\..*/, '');     // Remove extension.
@@ -344,7 +345,18 @@ module.exports = function (grunt) {
 					'<%= yeoman.tmp %>/scripts/templates.js': '<%= yeoman.app %>/templates/**/*.hbs'
 				}
 			}
+		},
+		karma: {
+			options: {
+				configFile: 'karma.conf.coffee'
+			},
+			ci: {
+				singleRun: true,
+				browsers: ['PhantomJS']
+			},
+			dev: {}
 		}
+
 	});
 
 	grunt.registerTask('server', function (target) {
@@ -364,11 +376,12 @@ module.exports = function (grunt) {
 	grunt.registerTask('test', [
 		'clean:server',
 		'concurrent:test',
-	  'symlink'
+		'symlink'
 	]);
 
 	grunt.registerTask('build', [
 		'clean:dist',
+		'karma:ci',
 		'useminPrepare',
 		'concurrent:dist',
 		'symlink',
