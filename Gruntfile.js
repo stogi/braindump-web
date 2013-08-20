@@ -318,6 +318,10 @@ module.exports = function (grunt) {
 				dest: '.tmp/bower_components',
 				relativeSrc: '../app/bower_components',
 				options: { type: 'dir' }
+			},
+			templates: {
+				dest: 'app/scripts/templates.js',
+				relativeSrc: '../../.tmp/scripts/templates.js'
 			}
 		},
 		handlebars: {
@@ -345,7 +349,6 @@ module.exports = function (grunt) {
 			},
 			dev: {}
 		}
-
 	});
 
 	grunt.registerTask('server', function (target) {
@@ -362,11 +365,19 @@ module.exports = function (grunt) {
 		]);
 	});
 
-	grunt.registerTask('test', [
-		'clean:server',
-		'concurrent:test',
-		'symlink'
-	]);
+//	grunt.registerTask('test', [
+//		'clean:server',
+//		'handlebars',
+//		'karma:ci',
+//		'symlink'
+//	]);
+
+	grunt.registerTask('test', function(environment, target) {
+		var karma = 'karma';
+		karma += environment ? ':' + environment : ''
+		karma += target ? ':' + target : ''
+		grunt.task.run(['symlink:templates', karma]);
+	});
 
 	grunt.registerTask('build', [
 		'clean:dist',
