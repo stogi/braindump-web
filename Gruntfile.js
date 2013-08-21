@@ -116,7 +116,7 @@ module.exports = function (grunt) {
 				'Gruntfile.js',
 				'<%= yeoman.app %>/scripts/{,*/}*.js',
 				'!<%= yeoman.app %>/scripts/vendor/*',
-				'test/spec/{,*/}*.js'
+				'!<%= yeoman.app %>/scripts/templates.js'
 			]
 		},
 		coffee: {
@@ -292,10 +292,6 @@ module.exports = function (grunt) {
 				'compass:server',
 				'handlebars'
 			],
-			test: [
-				'handlebars',
-				'karma:ci'
-			],
 			dist: [
 				'coffee',
 				'compass:dist',
@@ -373,9 +369,9 @@ module.exports = function (grunt) {
 //	]);
 
 	grunt.registerTask('test', function(environment, target) {
-		var karma = 'karma';
-		karma += environment ? ':' + environment : ''
-		karma += target ? ':' + target : ''
+		var karma = 'karma:';
+		karma += environment ? environment : 'ci';
+		karma += target ? ':' + target : '';
 		grunt.task.run(['symlink:templates', karma]);
 	});
 
