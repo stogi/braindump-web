@@ -16,7 +16,7 @@ module.exports = (config) ->
 
 		# list of files / patterns to load in the browser
 		files: [
-			{ pattern: 'app/bower_components/**/*.js', included: false },
+			{ pattern: 'app/bower_components/**/*.js', included: false }
 			{ pattern: 'app/scripts/templates.js', included: false }
 			{ pattern: 'app/scripts/**/*.coffee', included: false }
 			{ pattern: 'test/unit/**/*.coffee', included: false }

@@ -82,18 +82,19 @@ module.exports = (grunt) ->
 				path: 'http://localhost:<%= connect.options.port %>'
 
 		clean:
+			test: '<%= yeoman.app %>/scripts/templates.js'
 			dist:
 				files: [
 					{
 						dot: true
 						src: [
-							'.tmp'
+							'<%= yeoman.tmp %>'
 							'<%= yeoman.dist %>/*'
 							'!<%= yeoman.dist %>/.git*'
 						]
 					}
 				]
-			server: '.tmp'
+			server: '<%= yeoman.tmp %>'
 
 		jshint:
 			options:
@@ -317,7 +318,7 @@ module.exports = (grunt) ->
 			return grunt.task.run ['build', 'open', 'connect:dist:keepalive']
 
 		grunt.task.run [
-			'clean:server'
+			'clean'
 			'concurrent:server'
 			'connect:livereload'
 			'open'
@@ -330,14 +331,14 @@ module.exports = (grunt) ->
 		karma += if target then ':' + target else ''
 
 		grunt.task.run [
-			'clean:server'
+			'clean'
 			'handlebars'
 			'symlink:templates'
 			karma
 		]
 
 	grunt.registerTask 'build', [
-		'clean:dist'
+		'clean'
 		'useminPrepare'
 		'concurrent:dist'
 		'symlink:js'
