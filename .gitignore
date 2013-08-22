@@ -1,3 +1,4 @@
+app/scripts/templates.js
 node_modules
 dist
 .tmp
@@ -5,3 +6,4 @@ dist
 app/bower_components
 .idea
 *.iml
+libpeerconnection.log
