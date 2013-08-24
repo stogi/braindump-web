@@ -2,12 +2,14 @@
 	"name": "braindump-web",
 	"version": "0.0.1",
 	"dependencies": {
-		"backbone": "~1.0.0",
-		"sass-bootstrap": "~2.3.0",
-		"requirejs": "~2.1.8",
-		"modernizr": "~2.6.2",
-		"jquery": "~2.0.3",
-		"wire": "0.10.0"
+		"backbone": "1.0.0",
+		"handlebars.js": "master",
+		"jquery": "2.0.3",
+		"modernizr": "2.6.2",
+		"requirejs": "2.1.8",
+		"sass-bootstrap": "2.3.2",
+		"underscore": "1.5.1",
+		"wire": "0.10.1"
 	},
 	"devDependencies": {}
 }
