@@ -10,7 +10,7 @@ require.config
 	paths:
 		backbone: '../bower_components/backbone/backbone'
 		bootstrap: 'vendor/bootstrap'
-		handlebars: '../bower_components/handlebars/handlebars.runtime'
+		handlebars: '../bower_components/handlebars.js/dist/handlebars.runtime'
 		jquery: '../bower_components/jquery/jquery'
 		underscore: '../bower_components/underscore/underscore'
 
@@ -27,9 +27,6 @@ require.config
 				'jquery'
 			]
 			exports: 'jquery'
-
-		handlebars:
-			exports: 'Handlebars'
 
 		underscore:
 			exports: '_'
