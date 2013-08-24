@@ -27,9 +27,6 @@ require.config
 			]
 			exports: 'jquery'
 
-		handlebars:
-			exports: 'Handlebars'
-
 		underscore:
 			exports: '_'
 

@@ -1,6 +1,7 @@
 app/scripts/templates.js
 node_modules
 dist
+.DS_Store
 .tmp
 .sass-cache
 app/bower_components

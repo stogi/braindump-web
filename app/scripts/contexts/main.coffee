@@ -14,6 +14,6 @@ define
 
 		ready: 'render'
 
-	plugins: [
-		{ module: 'wire/debug' }
-	]
+#	plugins: [
+#		{ module: 'wire/debug' }
+#	]
