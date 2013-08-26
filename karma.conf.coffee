@@ -16,7 +16,10 @@ module.exports = (config) ->
 
 		# list of files / patterns to load in the browser
 		files: [
-			{ pattern: 'app/bower_components/**/*.js', included: false }
+			{ pattern: 'app/bower_components/handlebars.js/dist/handlebars.runtime.js', included: false }
+			{ pattern: 'app/bower_components/jquery/jquery.js', included: false }
+			{ pattern: 'app/bower_components/underscore/underscore.js', included: false }
+			{ pattern: 'app/bower_components/backbone/backbone.js', included: false }
 			{ pattern: 'app/scripts/templates.js', included: false }
 			{ pattern: 'app/scripts/**/*.coffee', included: false }
 			{ pattern: 'test/unit/**/*.coffee', included: false }
